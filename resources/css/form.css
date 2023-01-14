@@ -7,9 +7,11 @@
 .form-select {
     @apply p-2 leading-normal block w-full border text-gray-700 bg-white font-sans rounded text-left appearance-none relative focus:border-indigo-400 focus:ring;
 
-&::placeholder {
-     @apply text-gray-500 opacity-100;
- }
+&
+::placeholder {
+    @apply text-gray-500 opacity-100;
+}
+
 }
 
 .form-select {
@@ -20,9 +22,11 @@
     background-repeat: no-repeat;
     background-position: right 0.7rem center;
 
-&::-ms-expand {
-     @apply opacity-0;
- }
+&
+::-ms-expand {
+    @apply opacity-0;
+}
+
 }
 
 .form-input.error,

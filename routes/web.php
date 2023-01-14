@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,6 +68,41 @@ Route::delete('users/{user}', [UsersController::class, 'destroy'])
 
 Route::put('users/{user}/restore', [UsersController::class, 'restore'])
     ->name('users.restore')
+    ->middleware('auth');
+
+
+// Products
+
+Route::get('products', [ProductsController::class, 'index'])
+    ->name('products')
+    ->middleware('auth');
+
+Route::get('products/create', [ProductsController::class, 'create'])
+    ->name('products.create')
+    ->middleware('auth');
+
+Route::post('products', [ProductsController::class, 'stats'])
+    ->name('products.stats')
+    ->middleware('auth');
+
+Route::post('products', [ProductsController::class, 'store'])
+    ->name('products.store')
+    ->middleware('auth');
+
+Route::get('products/{product}/edit', [ProductsController::class, 'edit'])
+    ->name('products.edit')
+    ->middleware('auth');
+
+Route::put('products/{product}', [ProductsController::class, 'update'])
+    ->name('products.update')
+    ->middleware('auth');
+
+Route::delete('products/{product}', [ProductsController::class, 'destroy'])
+    ->name('products.destroy')
+    ->middleware('auth');
+
+Route::put('products/{product}/restore', [ProductsController::class, 'restore'])
+    ->name('products.restore')
     ->middleware('auth');
 
 // Organizations
