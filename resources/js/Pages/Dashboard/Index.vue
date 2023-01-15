@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {Head} from '@inertiajs/inertia-vue3'
+import {Head} from '@inertiajs/vue3'
 import Layout from '@/Layouts/Layout.vue'
 import Stats from '@/Components/Stats.vue'
 

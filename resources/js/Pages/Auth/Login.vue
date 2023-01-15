@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {Head} from '@inertiajs/inertia-vue3'
+import {Head} from '@inertiajs/vue3'
 import Logo from '@/Components/Logo.vue'
 import TextInput from '@/Components/TextInput.vue'
 import LoadingButton from '@/Components/LoadingButton.vue'
