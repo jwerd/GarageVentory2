@@ -16,6 +16,9 @@
                     </div>
                 </div>
             </Column>
+            <Column title="Product Image" description="Enter a product photo.">
+
+            </Column>
             <Column title="Product Dimensions" description="Enter your dimensions for your product.">
                 <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
                     <div class="flex flex-wrap -mb-8 -mr-6 p-8">
