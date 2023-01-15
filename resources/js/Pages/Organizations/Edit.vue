@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import {Head, Link} from '@inertiajs/inertia-vue3'
+import {Head, Link} from '@inertiajs/vue3'
 import Icon from '@/Components/Icon.vue'
 import Layout from '@/Layouts/Layout.vue'
 import TextInput from '@/Components/TextInput.vue'
