@@ -8,30 +8,29 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
-class ProductsController extends Controller
+class ItemsController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Products/Index', [
+        return Inertia::render('Items/Index', [
             'filters' => Request::all('search', 'trashed'),
-            'organizations' => Auth::user()->account->organizations()
+            'items' => Auth::user()->account->items()
                 ->orderBy('name')
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()
-                ->through(fn ($organization) => [
-                    'id' => $organization->id,
-                    'name' => $organization->name,
-                    'phone' => $organization->phone,
-                    'city' => $organization->city,
-                    'deleted_at' => $organization->deleted_at,
+                ->through(fn ($item) => [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'dimension' => $item->dimension,
+                    'price' => $item->price,
                 ]),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Products/Create');
+        return Inertia::render('Items/Create');
     }
 
     public function store()
@@ -54,7 +53,7 @@ class ProductsController extends Controller
 
     public function edit(Organization $organization)
     {
-        return Inertia::render('Products/Edit', [
+        return Inertia::render('Items/Edit', [
             'organization' => [
                 'id' => $organization->id,
                 'name' => $organization->name,

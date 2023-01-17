@@ -73,9 +73,11 @@ import Logo from '@/Components/Logo.vue'
 import Dropdown from '@/Components/Dropdown.vue'
 import MainMenu from '@/Components/MainMenu.vue'
 import FlashMessages from '@/Components/FlashMessages.vue'
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 export default {
     components: {
+        FontAwesomeIcon,
         Dropdown,
         FlashMessages,
         Icon,

@@ -2,16 +2,26 @@
     <div>
         <div class="mb-4">
             <Link class="group flex items-center py-3" :href="route('dashboard')">
-                <icon name="dashboard" class="mr-2 w-4 h-4"
-                      :class="isUrl('') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'"/>
+                <font-awesome-icon icon="fa-chart-simple" class="mr-2" :class="isUrl('dashboard') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
                 <div :class="isUrl('') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Dashboard</div>
             </Link>
         </div>
         <div class="mb-4">
+            <Link class="group flex items-center py-3" :href="route('items')">
+                <font-awesome-icon icon="fa-warehouse" class="mr-2" :class="isUrl('items') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
+                <div :class="isUrl('items') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Items</div>
+            </Link>
+        </div>
+        <div class="mb-4">
             <Link class="group flex items-center py-3" :href="route('products')">
-                <icon name="office" class="mr-2 w-4 h-4"
-                      :class="isUrl('products') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'"/>
-                <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Products</div>
+                <font-awesome-icon icon="fa-tag" class="mr-2" :class="isUrl('products') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
+                <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">For Sale</div>
+            </Link>
+        </div>
+        <div class="mb-4">
+            <Link class="group flex items-center py-3" :href="route('products')">
+                <font-awesome-icon icon="fa-money-bill" class="mr-2" :class="isUrl('products') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
+                <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Purchases</div>
             </Link>
         </div>
         <!--        <div class="mb-4">-->
@@ -42,7 +52,7 @@ import Icon from '@/Components/Icon.vue'
 export default {
     components: {
         Icon,
-        Link,
+        Link
     },
     methods: {
         isUrl(...urls) {

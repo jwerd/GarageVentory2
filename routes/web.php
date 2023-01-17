@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,39 +70,41 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
     ->name('users.restore')
     ->middleware('auth');
 
-
-// Products
-
-Route::get('products', [ProductsController::class, 'index'])
+Route::get('products', [ItemsController::class, 'index'])
     ->name('products')
     ->middleware('auth');
 
-Route::get('products/create', [ProductsController::class, 'create'])
-    ->name('products.create')
+// Items
+Route::get('items', [ItemsController::class, 'index'])
+    ->name('items')
     ->middleware('auth');
 
-Route::post('products', [ProductsController::class, 'stats'])
-    ->name('products.stats')
+Route::get('items/create', [ItemsController::class, 'create'])
+    ->name('items.create')
     ->middleware('auth');
 
-Route::post('products', [ProductsController::class, 'store'])
-    ->name('products.store')
+Route::post('items', [ItemsController::class, 'stats'])
+    ->name('items.stats')
     ->middleware('auth');
 
-Route::get('products/{product}/edit', [ProductsController::class, 'edit'])
-    ->name('products.edit')
+Route::post('items', [ItemsController::class, 'store'])
+    ->name('items.store')
     ->middleware('auth');
 
-Route::put('products/{product}', [ProductsController::class, 'update'])
-    ->name('products.update')
+Route::get('items/{product}/edit', [ItemsController::class, 'edit'])
+    ->name('items.edit')
     ->middleware('auth');
 
-Route::delete('products/{product}', [ProductsController::class, 'destroy'])
-    ->name('products.destroy')
+Route::put('items/{product}', [ItemsController::class, 'update'])
+    ->name('items.update')
     ->middleware('auth');
 
-Route::put('products/{product}/restore', [ProductsController::class, 'restore'])
-    ->name('products.restore')
+Route::delete('items/{product}', [ItemsController::class, 'destroy'])
+    ->name('items.destroy')
+    ->middleware('auth');
+
+Route::put('items/{product}/restore', [ItemsController::class, 'restore'])
+    ->name('items.restore')
     ->middleware('auth');
 
 // Organizations

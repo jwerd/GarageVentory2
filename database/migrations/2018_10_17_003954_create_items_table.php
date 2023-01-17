@@ -21,7 +21,8 @@ return new class extends Migration
             $table->float('list_price')->default(0.00);
             $table->json('dimension')->nullable();
             $table->boolean('available')->default(true);
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\User::class)->index();
+            $table->foreignIdFor(\App\Models\Account::class)->index();
             $table->timestamps();
             $table->softDeletes();
         });

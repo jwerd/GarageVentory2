@@ -2,10 +2,10 @@
     <div>
         <Head title="Create Product"/>
         <h1 class="mb-8 text-3xl font-bold">
-            Create Product
+            Add New Item
         </h1>
         <form @submit.prevent="store">
-            <Column title="Product Details" description="Enter your basic product details.">
+            <Column title="Details" description="Enter your basic items details.">
                 <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
 
                     <div class="flex flex-wrap -mb-8 -mr-6 p-8">
@@ -16,10 +16,10 @@
                     </div>
                 </div>
             </Column>
-            <Column title="Product Image" description="Enter a product photo.">
+            <Column title="Image" description="Enter a product photo.">
 
             </Column>
-            <Column title="Product Dimensions" description="Enter your dimensions for your product.">
+            <Column title="Dimensions" description="Enter your dimensions for your product.">
                 <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
                     <div class="flex flex-wrap -mb-8 -mr-6 p-8">
                         <text-input v-model="form.price" :error="form.errors.name" class="pb-8 pr-6 w-full md:w-1/3"
