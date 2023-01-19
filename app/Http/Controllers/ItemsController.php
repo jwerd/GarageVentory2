@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemRequest;
+use App\Models\Item;
 use App\Models\Organization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -19,12 +21,7 @@ class ItemsController extends Controller
                 ->filter(Request::only('search', 'trashed'))
                 ->paginate(10)
                 ->withQueryString()
-                ->through(fn ($item) => [
-                    'id' => $item->id,
-                    'name' => $item->name,
-                    'dimension' => $item->dimension,
-                    'price' => $item->price,
-                ]),
+                ->through(fn ($item) => $this->data($item)),
         ]);
     }
 
@@ -33,72 +30,50 @@ class ItemsController extends Controller
         return Inertia::render('Items/Create');
     }
 
-    public function store()
+    public function store(ItemRequest $request)
     {
         Auth::user()->account->organizations()->create(
-            Request::validate([
-                'name' => ['required', 'max:100'],
-                'email' => ['nullable', 'max:50', 'email'],
-                'phone' => ['nullable', 'max:50'],
-                'address' => ['nullable', 'max:150'],
-                'city' => ['nullable', 'max:50'],
-                'region' => ['nullable', 'max:50'],
-                'country' => ['nullable', 'max:2'],
-                'postal_code' => ['nullable', 'max:25'],
-            ])
+            $request->validated()
         );
 
         return Redirect::route('organizations')->with('success', 'Organization created.');
     }
 
-    public function edit(Organization $organization)
+    public function edit(Item $item)
     {
-        return Inertia::render('Items/Edit', [
-            'organization' => [
-                'id' => $organization->id,
-                'name' => $organization->name,
-                'email' => $organization->email,
-                'phone' => $organization->phone,
-                'address' => $organization->address,
-                'city' => $organization->city,
-                'region' => $organization->region,
-                'country' => $organization->country,
-                'postal_code' => $organization->postal_code,
-                'deleted_at' => $organization->deleted_at,
-                'contacts' => $organization->contacts()->orderByName()->get()->map->only('id', 'name', 'city', 'phone'),
-            ],
-        ]);
+        return Inertia::render('Items/Edit', ['item' => $this->data($item)]);
     }
 
-    public function update(Organization $organization)
+    public function update(Item $item, ItemRequest $request)
     {
         $organization->update(
-            Request::validate([
-                'name' => ['required', 'max:100'],
-                'email' => ['nullable', 'max:50', 'email'],
-                'phone' => ['nullable', 'max:50'],
-                'address' => ['nullable', 'max:150'],
-                'city' => ['nullable', 'max:50'],
-                'region' => ['nullable', 'max:50'],
-                'country' => ['nullable', 'max:2'],
-                'postal_code' => ['nullable', 'max:25'],
-            ])
+            $request->validated()
         );
 
         return Redirect::back()->with('success', 'Organization updated.');
     }
 
-    public function destroy(Organization $organization)
+    public function destroy(Item $item)
     {
-        $organization->delete();
+        $item->delete();
 
-        return Redirect::back()->with('success', 'Organization deleted.');
+        return Redirect::back()->with('success', 'Item deleted.');
     }
 
-    public function restore(Organization $organization)
+    public function restore(Item $item)
     {
-        $organization->restore();
+        $item->restore();
 
-        return Redirect::back()->with('success', 'Organization restored.');
+        return Redirect::back()->with('success', 'Item restored.');
+    }
+
+    protected function data($item) : array
+    {
+        return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'dimension' => $item->dimension,
+            'price' => $item->price,
+        ];
     }
 }

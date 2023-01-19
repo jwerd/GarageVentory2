@@ -14,12 +14,6 @@
         </div>
         <div class="mb-4">
             <Link class="group flex items-center py-3" :href="route('products')">
-                <font-awesome-icon icon="fa-tag" class="mr-2" :class="isUrl('products') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
-                <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">For Sale</div>
-            </Link>
-        </div>
-        <div class="mb-4">
-            <Link class="group flex items-center py-3" :href="route('products')">
                 <font-awesome-icon icon="fa-money-bill" class="mr-2" :class="isUrl('products') ? 'text-white' : 'text-indigo-400 fill-indigo-400 group-hover:text-white'"/>
                 <div :class="isUrl('products') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Purchases</div>
             </Link>

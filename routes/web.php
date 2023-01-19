@@ -70,6 +70,7 @@ Route::put('users/{user}/restore', [UsersController::class, 'restore'])
     ->name('users.restore')
     ->middleware('auth');
 
+// Temporary
 Route::get('products', [ItemsController::class, 'index'])
     ->name('products')
     ->middleware('auth');
@@ -91,50 +92,20 @@ Route::post('items', [ItemsController::class, 'store'])
     ->name('items.store')
     ->middleware('auth');
 
-Route::get('items/{product}/edit', [ItemsController::class, 'edit'])
+Route::get('items/{item}/edit', [ItemsController::class, 'edit'])
     ->name('items.edit')
     ->middleware('auth');
 
-Route::put('items/{product}', [ItemsController::class, 'update'])
+Route::put('items/{item}', [ItemsController::class, 'update'])
     ->name('items.update')
     ->middleware('auth');
 
-Route::delete('items/{product}', [ItemsController::class, 'destroy'])
+Route::delete('items/{item}', [ItemsController::class, 'destroy'])
     ->name('items.destroy')
     ->middleware('auth');
 
-Route::put('items/{product}/restore', [ItemsController::class, 'restore'])
+Route::put('items/{item}/restore', [ItemsController::class, 'restore'])
     ->name('items.restore')
-    ->middleware('auth');
-
-// Organizations
-
-Route::get('organizations', [OrganizationsController::class, 'index'])
-    ->name('organizations')
-    ->middleware('auth');
-
-Route::get('organizations/create', [OrganizationsController::class, 'create'])
-    ->name('organizations.create')
-    ->middleware('auth');
-
-Route::post('organizations', [OrganizationsController::class, 'store'])
-    ->name('organizations.store')
-    ->middleware('auth');
-
-Route::get('organizations/{organization}/edit', [OrganizationsController::class, 'edit'])
-    ->name('organizations.edit')
-    ->middleware('auth');
-
-Route::put('organizations/{organization}', [OrganizationsController::class, 'update'])
-    ->name('organizations.update')
-    ->middleware('auth');
-
-Route::delete('organizations/{organization}', [OrganizationsController::class, 'destroy'])
-    ->name('organizations.destroy')
-    ->middleware('auth');
-
-Route::put('organizations/{organization}/restore', [OrganizationsController::class, 'restore'])
-    ->name('organizations.restore')
     ->middleware('auth');
 
 // Contacts

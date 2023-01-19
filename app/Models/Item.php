@@ -39,7 +39,7 @@ class Item extends Model implements HasMedia
 
     protected static function booted()
     {
-        static::addGlobalScope(new ItemScope);
+//        static::addGlobalScope(new ItemScope);
 //        static::addGlobalScope(new UnsoldItemsScope);
 
         static::creating(function ($item) {
