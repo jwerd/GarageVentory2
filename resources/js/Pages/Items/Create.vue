@@ -2,6 +2,7 @@
     <div>
         <Head title="Create Product"/>
         <h1 class="mb-8 text-3xl font-bold">
+            <Link class="text-indigo-400 hover:text-indigo-600" :href="route('items')"><font-awesome-icon icon="fa-circle-arrow-left" /></Link>
             Add New Item
         </h1>
         <form @submit.prevent="store">

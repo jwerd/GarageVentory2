@@ -2,13 +2,14 @@
     <div>
         <Head :title="form.name"/>
         <h1 class="mb-8 text-3xl font-bold">
-            <Link class="text-indigo-400 hover:text-indigo-600" :href="route('items')">Items</Link>
-            <span class="text-indigo-400 font-medium">/</span>
+            <Link class="text-indigo-400 hover:text-indigo-600" :href="route('items')"><font-awesome-icon icon="fa-circle-arrow-left" /></Link>
             {{ form.name }}
         </h1>
+        <form @submit.prevent="update">
         <trashed-message v-if="item.deleted_at" class="mb-6" @restore="restore"> This item has been
             deleted.
         </trashed-message>
+        <PricingSlideOver />
         <Column title="Details" description="Enter your basic items details.">
             <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
 
@@ -20,17 +21,26 @@
                 </div>
             </div>
         </Column>
-        <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
-            <form @submit.prevent="update">
-                <div class="flex items-center px-8 py-4 bg-gray-50 border-t border-gray-100">
-                    <button v-if="!item.deleted_at" class="text-red-600 hover:underline" tabindex="-1"
-                            type="button" @click="destroy">Remove Item
-                    </button>
-                    <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Save
-                    </loading-button>
+        <Column title="Pricing" description="Calculate all various pricing.">
+            <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
+
+                <div class="flex flex-wrap -mb-8 -mr-6 p-8">
+                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full"
+                                label="Name"/>
+                    <text-input v-model="form.price" :error="form.errors.name" class="pb-8 pr-6 w-full"
+                                label="Purchase Price"/>
                 </div>
-            </form>
+            </div>
+        </Column>
+        <div class="border-t pt-5 border-gray-200"></div>
+        <div class="flex items-center justify-end max-w-full">
+            <button v-if="!item.deleted_at" class="text-red-600 hover:underline" tabindex="-1"
+                    type="button" @click="destroy">Remove Item
+            </button>
+            <loading-button :loading="form.processing" class="btn-indigo ml-auto" type="submit">Save
+            </loading-button>
         </div>
+        </form>
     </div>
 </template>
 
@@ -43,9 +53,13 @@ import SelectInput from '@/Components/SelectInput.vue'
 import LoadingButton from '@/Components/LoadingButton.vue'
 import TrashedMessage from '@/Components/TrashedMessage.vue'
 import Column from '@/Components/Column.vue'
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import PricingSlideOver from "@/Components/PricingSlideOver.vue";
 
 export default {
     components: {
+        PricingSlideOver,
+        FontAwesomeIcon,
         Column,
         Head,
         Icon,
@@ -65,6 +79,7 @@ export default {
             form: this.$inertia.form({
                 name: this.item.name,
                 price: this.item.price,
+                list_price: this.item.list_price
             }),
         }
     },

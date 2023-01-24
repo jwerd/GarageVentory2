@@ -12,9 +12,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserPen, faStore, faMoneyBill, faTag, faWarehouse, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faUserPen, faStore, faMoneyBill, faTag, faWarehouse, faCirclePlus, faCircleArrowLeft, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserPen, faStore, faMoneyBill, faTag, faWarehouse, faCirclePlus)
+library.add(faUserPen, faStore, faMoneyBill, faTag, faWarehouse, faCirclePlus, faCircleArrowLeft, faXmark)
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
