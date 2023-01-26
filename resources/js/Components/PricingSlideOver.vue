@@ -1,4 +1,5 @@
 <template>
+    <loading-button class="btn-indigo" @click="open = !open" type="submit">Caclulate Price</loading-button>
     <TransitionRoot as="template" :show="open">
         <Dialog as="div" class="relative z-10" @close="open = false">
             <div class="fixed inset-0" />
@@ -121,6 +122,6 @@ const team = [
     },
 ]
 
-const open = ref(true)
+const open = ref(false)
 
 </script>

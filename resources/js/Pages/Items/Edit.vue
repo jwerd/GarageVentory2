@@ -9,7 +9,7 @@
         <trashed-message v-if="item.deleted_at" class="mb-6" @restore="restore"> This item has been
             deleted.
         </trashed-message>
-        <PricingSlideOver />
+
         <Column title="Details" description="Enter your basic items details.">
             <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
 
@@ -22,14 +22,8 @@
             </div>
         </Column>
         <Column title="Pricing" description="Calculate all various pricing.">
-            <div class="max-w-full bg-white rounded-md shadow overflow-hidden">
-
-                <div class="flex flex-wrap -mb-8 -mr-6 p-8">
-                    <text-input v-model="form.name" :error="form.errors.name" class="pb-8 pr-6 w-full"
-                                label="Name"/>
-                    <text-input v-model="form.price" :error="form.errors.name" class="pb-8 pr-6 w-full"
-                                label="Purchase Price"/>
-                </div>
+            <div class="max-w-full bg-white rounded-md shadow overflow-hidden p-6">
+                    <PricingSlideOver />
             </div>
         </Column>
         <div class="border-t pt-5 border-gray-200"></div>
